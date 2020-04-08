@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Windows.Forms
@@ -14,6 +13,7 @@ Namespace WindowsApplication1
 	''' </summary>
 	Public Class MyCheckedComboBoxEdit
 		Inherits CheckedComboBoxEdit
+
 		Shared Sub New()
 			RepositoryItemMyCheckedComboBoxEdit.Register()
 		End Sub
@@ -25,7 +25,7 @@ Namespace WindowsApplication1
 				Return RepositoryItemMyCheckedComboBoxEdit.EditorName
 			End Get
 		End Property
-		<DesignerSerializationVisibility(DesignerSerializationVisibility.Content)> _
+		<DesignerSerializationVisibility(DesignerSerializationVisibility.Content)>
 		Public Shadows ReadOnly Property Properties() As RepositoryItemMyCheckedComboBoxEdit
 			Get
 				Return TryCast(MyBase.Properties, RepositoryItemMyCheckedComboBoxEdit)
@@ -35,11 +35,11 @@ Namespace WindowsApplication1
 		Public Overrides Property EditValue() As Object
 			Get
 'INSTANT VB NOTE: The local variable editValue was renamed since Visual Basic will not allow local variables with the same name as their enclosing function or property:
-				Dim editValue_Renamed As Object = MyBase.EditValue
+				Dim editValue_Conflict As Object = MyBase.EditValue
 				If isParsing Then
-					editValue_Renamed = Properties.MyFormatEditValue(editValue_Renamed)
+					editValue_Conflict = Properties.MyFormatEditValue(editValue_Conflict)
 				End If
-				Return editValue_Renamed
+				Return editValue_Conflict
 			End Get
 			Set(ByVal value As Object)
 				MyBase.EditValue = value

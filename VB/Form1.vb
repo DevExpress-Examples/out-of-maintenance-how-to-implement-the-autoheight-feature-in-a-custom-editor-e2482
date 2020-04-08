@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Drawing
 Imports System.Collections
 Imports System.ComponentModel
@@ -14,6 +13,7 @@ Namespace WindowsApplication1
 	''' </summary>
 	Public Class Form1
 		Inherits System.Windows.Forms.Form
+
 		Private _Ri As RepositoryItemMyCheckedComboBoxEdit
 		Private gridControl1 As DevExpress.XtraGrid.GridControl
 		Private gridView1 As DevExpress.XtraGrid.Views.Grid.GridView
@@ -36,7 +36,7 @@ Namespace WindowsApplication1
 		''' <summary>
 		''' Clean up any resources being used.
 		''' </summary>
-		Protected Overrides Overloads Sub Dispose(ByVal disposing As Boolean)
+		Protected Overrides Sub Dispose(ByVal disposing As Boolean)
 			If disposing Then
 				If components IsNot Nothing Then
 					components.Dispose()
@@ -53,8 +53,8 @@ Namespace WindowsApplication1
 		Private Sub InitializeComponent()
 			Me.gridControl1 = New DevExpress.XtraGrid.GridControl()
 			Me.gridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-			CType(Me.gridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-			CType(Me.gridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+			DirectCast(Me.gridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+			DirectCast(Me.gridView1, System.ComponentModel.ISupportInitialize).BeginInit()
 			Me.SuspendLayout()
 			' 
 			' gridControl1
@@ -79,9 +79,10 @@ Namespace WindowsApplication1
 			Me.Controls.Add(Me.gridControl1)
 			Me.Name = "Form1"
 			Me.Text = "Form1"
-'			Me.Load += New System.EventHandler(Me.Form1_Load);
-			CType(Me.gridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-			CType(Me.gridView1, System.ComponentModel.ISupportInitialize).EndInit()
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.Form1_Load);
+			DirectCast(Me.gridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+			DirectCast(Me.gridView1, System.ComponentModel.ISupportInitialize).EndInit()
 			Me.ResumeLayout(False)
 
 		End Sub
@@ -90,7 +91,7 @@ Namespace WindowsApplication1
 		''' <summary>
 		''' The main entry point for the application.
 		''' </summary>
-		<STAThread> _
+		<STAThread>
 		Shared Sub Main()
 			Application.Run(New Form1())
 		End Sub
@@ -98,15 +99,15 @@ Namespace WindowsApplication1
 		Public Function CreateTable() As DataTable
 			Dim tbl As New DataTable()
 			tbl.Columns.Add("Names", GetType(String))
-			tbl.Rows.Add("Value1" & Constants.vbCrLf)
-			tbl.Rows.Add("Value1" & Constants.vbCrLf & "Value2")
-			tbl.Rows.Add("Value1" & Constants.vbCrLf & "Value2" & Constants.vbCrLf & "Value3")
-			tbl.Rows.Add("Value1" & Constants.vbCrLf & "Value2" & Constants.vbCrLf & "Value3" & Constants.vbCrLf & "Value4")
+			tbl.Rows.Add("Value1" & vbCrLf)
+			tbl.Rows.Add("Value1" & vbCrLf & "Value2")
+			tbl.Rows.Add("Value1" & vbCrLf & "Value2" & vbCrLf & "Value3")
+			tbl.Rows.Add("Value1" & vbCrLf & "Value2" & vbCrLf & "Value3" & vbCrLf & "Value4")
 			Return tbl
 		End Function
 
 
-		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 			gridControl1.DataSource = CreateTable()
 			gridView1.OptionsView.RowAutoHeight = True
 			_Ri = New RepositoryItemMyCheckedComboBoxEdit()
