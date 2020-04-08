@@ -47,20 +47,21 @@ namespace WindowsApplication1
             return value.ToString().Replace(String.Format("{0} ", SeparatorChar), Environment.NewLine);
         }
 
-        protected override ConvertEditValueEventArgs DoFormatEditValue(object val)
-        {
-            ConvertEditValueEventArgs result = base.DoFormatEditValue(val);
-            result.Value = MyFormatEditValue(result.Value);
-            result.Handled = true;
-            return result;
+
+       
+                protected override void RaiseFormatEditValue(ConvertEditValueEventArgs e) {
+            base.RaiseFormatEditValue(e);
+            e.Value = MyFormatEditValue(e.Value);
+            e.Handled = true;
         }
 
-        protected override ConvertEditValueEventArgs DoParseEditValue(object val)
-        {
-            ConvertEditValueEventArgs result = base.DoParseEditValue(val);
-            result.Value = MyParseEditValue(result.Value);
-            result.Handled = true;
-            return result;
+
+
+        protected override void RaiseParseEditValue(ConvertEditValueEventArgs e) {
+            base.RaiseParseEditValue(e);
+            e.Value = MyParseEditValue(e.Value);
+            e.Handled = true;
         }
-    }
+
+        }
 }
