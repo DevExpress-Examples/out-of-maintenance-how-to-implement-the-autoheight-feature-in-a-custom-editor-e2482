@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Windows.Forms
@@ -11,9 +10,10 @@ Imports DevExpress.XtraEditors.Drawing
 Imports DevExpress.XtraEditors.ViewInfo
 
 Namespace WindowsApplication1
-	<UserRepositoryItem("Register")> _
+	<UserRepositoryItem("Register")>
 	Public Class RepositoryItemMyCheckedComboBoxEdit
 		Inherits RepositoryItemCheckedComboBoxEdit
+
 		Shared Sub New()
 			Register()
 		End Sub
@@ -24,7 +24,7 @@ Namespace WindowsApplication1
 
 		Public Shared Sub Register()
             EditorRegistrationInfo.Default.Editors.Add(New EditorClassInfo(EditorName, GetType(MyCheckedComboBoxEdit), GetType(RepositoryItemMyCheckedComboBoxEdit), GetType(MyCheckedComboBoxEditViewInfo), New MyButtonEditPainter(), True))
-		End Sub
+        End Sub
 		Public Overrides ReadOnly Property EditorTypeName() As String
 			Get
 				Return EditorName
@@ -45,18 +45,21 @@ Namespace WindowsApplication1
 			Return value.ToString().Replace(String.Format("{0} ", SeparatorChar), Environment.NewLine)
 		End Function
 
-		Protected Overrides Function DoFormatEditValue(ByVal val As Object) As ConvertEditValueEventArgs
-			Dim result As ConvertEditValueEventArgs = MyBase.DoFormatEditValue(val)
-			result.Value = MyFormatEditValue(result.Value)
-			result.Handled = True
-			Return result
-		End Function
 
-		Protected Overrides Function DoParseEditValue(ByVal val As Object) As ConvertEditValueEventArgs
-			Dim result As ConvertEditValueEventArgs = MyBase.DoParseEditValue(val)
-			result.Value = MyParseEditValue(result.Value)
-			result.Handled = True
-			Return result
-		End Function
+
+				Protected Overrides Sub RaiseFormatEditValue(ByVal e As ConvertEditValueEventArgs)
+			MyBase.RaiseFormatEditValue(e)
+			e.Value = MyFormatEditValue(e.Value)
+			e.Handled = True
+				End Sub
+
+
+
+		Protected Overrides Sub RaiseParseEditValue(ByVal e As ConvertEditValueEventArgs)
+			MyBase.RaiseParseEditValue(e)
+			e.Value = MyParseEditValue(e.Value)
+			e.Handled = True
+		End Sub
+
 	End Class
 End Namespace

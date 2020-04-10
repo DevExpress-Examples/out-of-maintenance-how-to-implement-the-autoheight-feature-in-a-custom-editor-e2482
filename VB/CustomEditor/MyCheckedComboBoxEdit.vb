@@ -1,5 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Windows.Forms
@@ -14,6 +13,7 @@ Namespace WindowsApplication1
 	''' </summary>
 	Public Class MyCheckedComboBoxEdit
 		Inherits CheckedComboBoxEdit
+
 		Shared Sub New()
 			RepositoryItemMyCheckedComboBoxEdit.Register()
 		End Sub
@@ -25,7 +25,7 @@ Namespace WindowsApplication1
 				Return RepositoryItemMyCheckedComboBoxEdit.EditorName
 			End Get
 		End Property
-		<DesignerSerializationVisibility(DesignerSerializationVisibility.Content)> _
+		<DesignerSerializationVisibility(DesignerSerializationVisibility.Content)>
 		Public Shadows ReadOnly Property Properties() As RepositoryItemMyCheckedComboBoxEdit
 			Get
 				Return TryCast(MyBase.Properties, RepositoryItemMyCheckedComboBoxEdit)
