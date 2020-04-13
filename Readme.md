@@ -12,6 +12,9 @@
 
 <p>This example demonstrates how to create a custom CheckedComboBox which works with multiline values and implements the Auto Height feature.</p>
 
+<p>Please review the following blog post to learn more about API changes we made in version 20.1:<br />
+<a href="https://community.devexpress.com/blogs/winforms/archive/2020/04/09/winforms-upcoming-v20-1-api-changes.aspx">WinForms - Upcoming v20.1 API Changes</a></p>
+
 <br/>
 
 
